@@ -1,5 +1,4 @@
-import "./App.css";
-import Checkout from "./Pages/Checkout";
+import Cart from "./Pages/Cart";
 import Header from "./Pages/Header";
 import Home from "./Pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -7,17 +6,16 @@ import Login from "./Pages/Login.js";
 import React, { useEffect } from "react";
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
-import FixedButton from "./FixedButton";
-
-import Footer from "./Pages/Footer";
-
-
-
+import FixedButton from "./Pages/Components/FixedButton";
 import Orders from "./Pages/Orders";
+import Footer from "./Pages/Footer";
+//import io from "socket.io-client";
 
+//const socket = io.connect("http://localhost:3001");
 
 function App() {
   const [{ }, dispatch] = useStateValue();
+
 
   useEffect(() => {
     //Will only rum once the app component loads
@@ -59,12 +57,12 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route
-            path="/checkout"
+            path="/cart"
             element={
               <>
                 <Header />
                 <FixedButton />
-                <Checkout />
+                <Cart />
               </>
             }
           ></Route>

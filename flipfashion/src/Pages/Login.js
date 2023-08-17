@@ -40,7 +40,7 @@ function Login() {
             <div className='login mx-auto max-w-lg'>
 
                 <h1 class="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
-                    FlipFashion
+                    flipfashion
                 </h1>
                 <p class="mx-auto mt-4 max-w-md text-center text-gray-500">
                     We provide best fashionable trendy outfit suggestions.
@@ -58,10 +58,10 @@ function Login() {
                         <div className="relative">
                             <input type='password' value={password} onChange={e => setPassword(e.target.value)} className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter password" id="password" />  </div></div>
 
-                    <button type='submit' onClick={signIn} className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">Sign In</button>
+                    <button type='submit' onClick={signIn} className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-lg font-medium text-white">Sign In</button>
                     <p class="text-center text-sm text-gray-500">
                         No account?
-                        <a className="underline w-full rounded-lg px-5 py-3" href onClick={register}>Sign up</a>
+                        <a className="underline w-full text-blue-700 rounded-lg px-5 py-3 cursor-pointer" href onClick={register}>Sign up</a>
                     </p>
                 </form>
 

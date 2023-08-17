@@ -1,42 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import { db } from "../firebase";
-import './css/Orders.css';
 import { useStateValue } from "../StateProvider";
-import Order from './Order';
+import { useNavigate } from "react-router-dom";
+
+import EmptyOrder from './Components/EmptyOrder';
+import OrderProduct from './OrderProduct';
 
 function Orders() {
-    const [{ user }] = useStateValue();
-    const [orders, setOrders] = useState([]);
+    const [{ orders }] = useStateValue();
 
-    useEffect(() => {
-        if (user) {
-            db
-                .collection('users')
-                .doc(user?.uid)
-                .collection('orders')
-                .orderBy('created', 'desc')
-                .onSnapshot(snapshot => (
-                    setOrders(snapshot.docs.map(doc => ({
-                        id: doc.id,
-                        data: doc.data()
-                    })))
-                ))
-        } else {
-            setOrders([])
-        }
+    const navigate = useNavigate();
 
-    }, [user]);
+    const goHomeHandler = () => {
+        navigate('/');
+    }
 
     return (
-        <div className='orders'>
-            <h1>Your Orders</h1>
+        <>
+            <main className="w-full mt-20">
 
-            <div className='orders__order'>
-                {orders?.map(order => (
-                    <Order order={order} />
-                ))}
-            </div>
-        </div>
+
+                <div className="flex flex-col sm:flex-row gap-3.5 w-full sm:w-11/12 mt-0 sm:mt-4 m-auto sm:mb-7">
+
+
+                    <div className="flex-1">
+
+
+                        <div className="flex flex-col shadow bg-white">
+                            <span className="font-medium text-lg px-2 sm:px-8 py-4 border-b">My Orders ({orders.length})</span>
+
+                            {orders && orders.length === 0 && (
+                                <EmptyOrder />
+                            )}
+
+                            {orders.map(item => (
+                                <OrderProduct
+                                    id={item.id}
+                                    title={item.title}
+                                    image={item.image}
+                                    price={item.price}
+                                />
+                            ))}
+
+
+                            <div className="flex justify-center">
+                                <button onClick={goHomeHandler} className="bg-blue-600 cursor-pointer w-full sm:w-1/3 mx-2 sm:mx-6 my-4 py-3 font-medium text-white shadow hover:shadow-lg rounded-sm">GO HOME</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main></>
     );
 }
 

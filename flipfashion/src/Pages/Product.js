@@ -3,7 +3,7 @@ import { useStateValue } from "../StateProvider";
 
 
 function Product({ id, title, image, price, rating }) {
-    const [{ basket }, dispatch] = useStateValue();
+    const [dispatch] = useStateValue();
 
     const addToBasket = () => {
         // dispatch the item into the data layer
@@ -20,10 +20,10 @@ function Product({ id, title, image, price, rating }) {
     };
 
     return (
-        <div className="product flex flex-col items-start gap-2 px-4 py-6 relative hover:shadow-lg rounded-sm">
+        <div className="flex flex-col items-start gap-2 px-4 py-6 relative hover:shadow-lg rounded-sm">
             <div className="product__info flex flex-col items-center text-center group">
                 <div className="w-44 h-48">
-                    <img draggable="false" className="w-full h-full object-contain" src={image} alt="Product Item" />
+                    <img draggable="false" className="w-full h-full object-contain hover:scale-110 transition-transform duration-300" src={image} alt="Product Item" />
                 </div>
                 <h2 className="text-sm mt-4 group-hover:text-primary-blue text-left">{title}</h2>
             </div>
@@ -35,21 +35,25 @@ function Product({ id, title, image, price, rating }) {
                         {Array(rating)
                             .fill()
                             .map((_, i) => (
-                                <p>🌟</p>
+                                <p key={i} >🌟</p>
                             ))}
 
                     </div>
 
+
                 </span>
+
 
                 <div className="flex items-center gap-1.5 text-md font-medium">
 
-                    <span>₹{price.toLocaleString()}</span>
+                    <span className="">₹&nbsp;{price.toLocaleString()}</span>
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-20" onClick={addToBasket}>Add to Basket</button>
+
                 </div>
 
             </div>
 
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={addToBasket}>Add to Basket</button>
+
         </div>
     );
 }

@@ -1,0 +1,19 @@
+import React from 'react'
+
+function OrderProduct({ id, image, title, price }) {
+    return (
+        <div className=' flex flex-col items-start gap-2 px-4 py-6 relative hover:shadow-lg rounded-sm'>
+            <div className="product__info flex flex-col items-center text-center group">
+                <div className="w-44 h-48">
+                    <img draggable="false" className="w-full h-full object-contain hover:scale-110 transition-transform duration-300" src={image} alt="product" />
+                </div>
+                <h2 className="text-sm mt-4 group-hover:text-primary-blue text-left">{title}</h2>
+            </div>
+            <div className='flex items-center gap-1.5 text-md font-medium'>
+                <span className="">₹&nbsp;{price}</span>
+            </div>
+        </div>
+    )
+}
+
+export default OrderProduct;

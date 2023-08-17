@@ -1,35 +1,37 @@
 import SearchIcon from '@mui/icons-material/Search';
-import { useState, useEffect } from 'react';
+//import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+//import axios from 'axios';
 
 const Searchbar = () => {
 
     const [keyword, setKeyword] = useState("");
-    const [searchHistory, setSearchHistory] = useState([]);
+    //const [searchHistory, setSearchHistory] = useState([]);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await axios.post('http://localhost:3001/store-history', {
-                searchTerm: keyword
-            });
+        // try {
+        //     await axios.post('http://localhost:3001/store-history', {
+        //         searchTerm: keyword
+        //     });
 
-            setKeyword('');
+        //     setKeyword('');
 
-            navigate('/');
+        //     navigate('/');
 
-        } catch (error) {
-            console.error(error);
-        }
+        // } catch (error) {
+        //     console.error(error);
+        // }
+        navigate('/');
     };
 
-    useEffect(() => {
-        axios.get('http://localhost:3001/get-history')
-            .then(response => setSearchHistory(response.data))
-            .catch(error => console.error(error));
-    }, []);
+    // useEffect(() => {
+    //     axios.get('http://localhost:3001/get-history')
+    //         .then(response => setSearchHistory(response.data))
+    //         .catch(error => console.error(error));
+    // }, []);
 
 
 

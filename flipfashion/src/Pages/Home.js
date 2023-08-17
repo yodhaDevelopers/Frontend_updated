@@ -4,8 +4,8 @@ import Product from "./Product";
 function Home() {
     return (
         <main className="flex flex-col gap-3 px-2 mt-16 sm:mt-2">
-            <section className="banner h-44 sm:h-72 w-full rounded-sm shadow relative overflow-hidden">
-                <img draggable="false" className="h-44 sm:h-72 w-full object-cover" src="https://rukminim2.flixcart.com/fk-p-flap/844/140/image/7d9362472788c156.jpg?q=50" alt="FlipFashion Banner" />
+            <section style={{ height: "450px" }} className="banner h-44 sm:h-72 w-full rounded-sm shadow relative overflow-hidden cursor-pointer">
+                <img style={{ marginTop: "70px", height: "400px", width: "1920px" }} draggable="false" className="h-44 sm:h-72 w-full object-cover" src="assets/banner.png" alt="FlipFashion Banner" />
             </section>
             <section className="bg-white w-full shadow overflow-hidden">
 

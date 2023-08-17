@@ -1,5 +1,6 @@
 export const initialState = {
     basket: [],
+    orders: [],
     user: null
 };
 
@@ -48,6 +49,11 @@ function reducer(state, action) {
             }
 
 
+        case "PLACE_ORDER":
+            return {
+                ...state,
+                orders: [...state.orders, action.item],
+            }
         default:
             return state;
     }
